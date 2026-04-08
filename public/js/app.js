@@ -221,9 +221,13 @@ function escapeHtml(text) {
 // ===== Utility: Escape attribute value =====
 function escapeAttr(text) {
   return text
-    .replace(/\\/g, '\\\\')
-    .replace(/'/g, "\\'")
-    .replace(/"/g, '\\"');
+    .replace(/&/g, '&amp;')
+    .replace(/'/g, '&#39;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\n/g, '&#10;')
+    .replace(/\r/g, '&#13;');
 }
 
 // ===== Event Listeners =====

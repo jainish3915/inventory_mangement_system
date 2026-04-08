@@ -219,11 +219,21 @@ function escapeHtml(text) {
 }
 
 // ===== Utility: Escape attribute value =====
+// Values are used inside onclick="..." HTML attributes containing JS string literals,
+// so we must escape for BOTH contexts: first JS string escaping, then HTML entity encoding.
 function escapeAttr(text) {
-  return text
+  // Step 1: JS string escape (backslashes, quotes, newlines)
+  let s = text
     .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
-    .replace(/"/g, '\\"');
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r');
+  // Step 2: HTML entity encode so it survives the HTML attribute parser
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 // ===== Event Listeners =====

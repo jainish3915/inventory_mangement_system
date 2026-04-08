@@ -163,8 +163,10 @@ const searchProducts = async (req, res) => {
         message: 'Search query is required',
       });
     }
+    // Escape special regex characters to prevent ReDoS and regex injection
+    const escapedQuery = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const products = await Product.find({
-      name: { $regex: q, $options: 'i' },
+      name: { $regex: escapedQuery, $options: 'i' },
     }).sort({ createdAt: -1 });
     res.status(200).json({
       success: true,

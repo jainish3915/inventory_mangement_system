@@ -1,0 +1,30 @@
+{
+  "name": "inventory-management-system",
+  "version": "1.0.0",
+  "description": "A complete Inventory Management System using Node.js, Express.js, MongoDB, and Vanilla JavaScript",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "inventory",
+    "management",
+    "nodejs",
+    "express",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "Jainish Shah",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
